@@ -30,7 +30,7 @@ class ProfileController extends AbstractController
     	dump($profiles);
 
         return $this->render('pages/profile.html.twig', [
-            'page_name' => 'La Page Perso',
+            'page_name' => 'les profils',
             'profiles' => $profiles
 
         ]);

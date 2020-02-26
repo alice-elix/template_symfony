@@ -1,8 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{ page_name }}{% endblock %}
 {% block jumbotron %} {{ page_name }} {% endblock %}
 
+
 {% block body %}
+<div class="container">
+	<h2>Site multifonctions </h2>
+	<div class="row flex">
+		<div class="col-6">
+			<h3>Pour la détente : </h3>
+				{% for action in a4f %}
+					<div class="row my-2">
+						<a class="btn btn-outline-info" href="{{ action.href }}">{{ action.name }}</a> 
+					</div>
+				{% endfor %}
+			
+		</div>
+		<div class="col-6">
+			<h3>Pour le boulot : </h3>
+				{% for action in a4j %}
+					<div class="row my-2">
+						<a class="btn btn-outline-success" href="{{ action.href }}">{{ action.name }}</a> 
+					</div>
+				{% endfor %}
+		</div>
+	</div>
+</div>
 	
 {% endblock %}
