@@ -6,24 +6,32 @@
 
 {% block body %}
 <div class="container">
-	<h2>Site multifonctions </h2>
+	<h2 class="text-center">Site multifonctions </h2>
 	<div class="row flex">
-		<div class="col-6">
-			<h3>Pour la détente : </h3>
-				{% for action in a4f %}
-					<div class="row my-2">
-						<a class="btn btn-outline-info" href="{{ action.href }}">{{ action.name }}</a> 
-					</div>
-				{% endfor %}
-			
+		<div class="col-6 ">
+			<div class="row my-2">
+				<p class="mr-5 text-justify">L'objectif de ce site est la création d'un template avec des fonctions de base, utilisable après personnalisation en fonction des cahiers des charges. Ces fonctions comprennent la page d'accueil et la barre de navigation, un espace de connexion et une surcouche pour le e-commerce. </p>
+			</div>
 		</div>
 		<div class="col-6">
-			<h3>Pour le boulot : </h3>
-				{% for action in a4j %}
-					<div class="row my-2">
-						<a class="btn btn-outline-success" href="{{ action.href }}">{{ action.name }}</a> 
-					</div>
-				{% endfor %}
+			<div class="row my-2">
+				<p class="mr-5 text-justify">Je profiterai de ce template pour présenter mon CV et quelques petits modules.</p>
+			</div>
+		</div>
+	</div>
+	<div class="row flex mt-5">
+		<div class="col-6">
+		<h3>Pour le boulot : </h3>
+			<div class="row my-2">
+				<p class="mr-5 text-justify">Pour le moment, seul mon <a href="https://gaelle-david.cmoi.cc/">CV</a> est disponible (lien exterieur)</p>
+				<p class="mr-5 text-justify">Par la suite, je mettrai en ligne mon cv directement sur ce site ainsi qu'un module pour accéder aux lettres de motivations</p>
+			</div>
+		</div>
+		<div class="col-6">
+		<h3>Pour la détente : </h3>
+			<div class="row my-2">
+				<p class="mr-5 text-justify">Ce site offrira la possibilité à tous et toutes de se créer un profil, présentera un tchat et un mini jeu</p> 
+			</div>	
 		</div>
 	</div>
 </div>

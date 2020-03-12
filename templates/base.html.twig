@@ -15,21 +15,22 @@
 
     	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	    <ul class="navbar-nav mr-auto">
-    	      <li class="nav-item ">
-    	        <a class="nav-link {% if page_name is defined and page_name == 'les profils' %}active{%endif%}" href="{{path('profile')}}">Profils</a>
-    	      </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Espace Perso</a>
+                <a class="nav-link" target="_blank" href="https://gaelle-david.cmoi.cc/">CV</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Espace Perso</a>
               </li>
     	      <li class="nav-item dropdown">
     	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	          Page(s) d'action
+    	          Pages à venir
     	        </a>
     	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    	          <a class="dropdown-item disabled" href="#" aria-disabled="true">Tchat</a>
-    	          <div class="dropdown-divider"></div>
-    	          <a class="dropdown-item disabled" href="#" aria-disabled="true">CV</a>
+    	          <a class="dropdown-item disabled" href="#"  aria-disabled="true">CV</a>
     	          <a class="dropdown-item disabled" href="#" aria-disabled="true">Lettres de motivation</a>
+    	          <div class="dropdown-divider"></div>
+                  <a class="dropdown-item disabled {% if page_name is defined and page_name == 'les profils' %}active{%endif%}" href="{{path('profile')}}" aria-disabled="true">Profils</a>
+                  <a class="dropdown-item disabled" href="#" aria-disabled="true">Tchat</a>
                   <a class="dropdown-item disabled" href="#" aria-disabled="true">Jeux</a>
     	        </div>
     	      </li>
@@ -37,7 +38,7 @@
     	  </div>
     	</nav>
     	<div class="jumbotron text-center">
-    		<h1>Ici, c'est 
+    		<h1>Ici, c'est
     			{% block jumbotron %}{% endblock %} !
     		</h1>
     	</div>

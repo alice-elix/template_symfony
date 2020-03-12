@@ -38,9 +38,7 @@ class HomeController extends AbstractController
         // $em->flush(); 
 
         $a4f = $this->repository->findByType('Fun');
-        dump($a4f);
         $a4j = $this->repository->findByType('Job');
-        dump($a4j);
 
         return $this->render('pages/index.html.twig', [
             'page_name' => 'l\'accueil',
