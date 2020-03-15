@@ -42,8 +42,8 @@ class HomeController extends AbstractController
 
         return $this->render('pages/index.html.twig', [
             'page_name' => 'l\'accueil',
-            'a4f' => $a4f,
-            'a4j' => $a4j
+            'as4f' => $a4f,
+            'as4j' => $a4j
         ]);
     }
 }

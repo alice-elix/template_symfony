@@ -45,9 +45,9 @@ class CVController extends AbstractController
         	'sections'	=> $sections,
         	'id'		=> $id,
         	'logosWeb' 	=> $logosWeb,
-        	'logosApli' 	=> $logosApli,
+        	'logosApli' => $logosApli,
         	'logosComm' => $logosComm,
-        	'imgsFooter' => $imgsFooter,
+        	'imgsFooter'=> $imgsFooter,
         ]);
     }
 }

@@ -1,0 +1,236 @@
+{% extends 'base_cv.html.twig' %}
+
+{% block title %}{{ page_name }}{% endblock %}
+
+{% block stylesheets %}
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Orbitron&display=swap" rel="stylesheet">
+
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+        <!-- animate -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <!-- aos animate -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+       	
+        <!-- Styles perso -->  
+        <link rel="stylesheet" type="text/css" href="/css/style_cv_2.css">
+
+{% endblock %}
+
+{% block body %}
+	<nav class="navbar fixed-top navbar-expand-md navbar-dark nav-cv">
+        <div class="container">
+    	    <a class="navbar-brand animated slideInLeft name" href="#">Lettre de Motivation</a>
+    	        <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	            <span class="navbar-toggler-icon"></span>
+    	        </button>
+    	    <div class="collapse navbar-collapse ma d-flex justify-content-end" id="navbarSupportedContent">
+    	        <ul class="navbar-nav  animated slideInRight w-50 ">
+                    <li class="nav-item w-100 pb-0  text-right">
+                    	<form method="post">
+                    	    <div class="form-group">
+                    	        <div class="form-row ">
+                    	            <div class="col-md-12 ">
+                    	              	<label for="name" class="text-right text-white">Nom de votre entreprise</label>
+                    	              	<input type="text" id="name" name="name" class="form-control" required="required" autofocus="autofocus" >
+                    	            </div>
+                    	        </div>
+                    	    </div>
+                    	</form>
+                    </li>
+    	        </ul>
+    	    </div>
+        </div>
+	</nav>
+	<header class="headerLM"></header>
+	{% if errors is not empty %}
+        <div class="row d-flex justify-content-center align-content-center blockError my-auto">
+            <div class="col-8 d-flex"> 
+                <div class="row entNull">
+                    <div class="col-12 d-flex align-items-center">
+                        <div class="alert alert-danger">{{errors|raw}}</div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <button class="btn btn-dark w-100 h-75 btnLM" href="mailto:gaelle.david@egaliscope.fr">M'écrire</button>
+                    </div>
+                    <div class="col-md-6 ">
+                        <button class="btn btn-dark w-100 h-75 btnLM" href="https://gaelle-david.cmoi.cc/">Consulter le CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+		{% elseif success == true %}
+		  
+		
+    <main class="container">                          
+        <section id="competences">
+            <div class="container h-100 d-block">
+                <div class="content d-flex flex-column justify-content-around">
+                    <!-- <div class="row d-flex justify-content-center align-items-center" data-aos="fade-down">
+                        <h2 class="my-4 ">titre 1ere section</h2>
+                    </div> -->
+                    <div class="row d-flex rowLabel justify-content-between mb-5">
+                        <div class="fullstack col-12 col-md-3 label" data-aos="fade-down">
+                            <div class="row textLogo">
+                                <a class="perso-link" href="mailto:gaelle.david@egaliscope.fr"><h3><strong>Gaëlle DAVID </strong></h3></a>
+                            </div>
+                            <div class="row textLogo">
+                                <p>adresse1 </p>
+                            </div>
+                            <div class="row textLogo">
+                                <p>adresse2 </p>
+                            </div>
+                            <div class="row textLogo">
+                                <em>tel</em>
+                            </div>
+                        </div><!-- fin §1 -->
+
+                        <div class="application col-12 col-md-3 offset-md-1 label" data-aos="fade-down">
+                            {% if ent_select is not empty %}
+                            <div class="row textLogo">
+                                <h3><strong>{{ ent_select.getNameEntreprise }}</strong></h3>
+                            </div>
+
+                            <div class="row textLogo">
+                                <h4>
+                                    <strong>
+                                        {% if ent_select.getFirstNameContact() is not null and ent_select.getLastNameContact() is not null %}
+                                           {{ ent_select.getFirstNameContact() ~ ' ' ~  ent_select.getLastNameContact() }}
+                                        {%endif%}
+                                         
+                                    </strong>
+                                </h4>
+                            </div>
+                            {% endif %}   
+                            
+                        </div><!-- fin §2 -->
+                    </div>
+                    <div class="row d-flex rowLabel justify-content-end">
+                        <div class="comm col-12 col-md-3 label py-0" >
+                            <div class="row textLogo pb-0">
+                                <h3>Toulouse,</h3>
+                            </div>
+                            <div class="row textLogo pb-0">
+                                <p><strong>le {{ ent_select.getDateLm()|date("d/m/Y") }}</strong></p>
+                            </div>            
+                        </div><!-- fin §3 -->  
+                        
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <section id="experiences">
+            <div class="container h-100 d-block ">
+                <div class="content " data-aos="fade-down">
+                    <div class="row rowLabel">
+                    <!-- <div class="row d-flex justify-content-center align-items-center" data-aos="fade-down">
+                        <h2><i class="fas fa-flask"></i> titre 2eme section</h2>
+                    </div> -->
+                    <!-- <div class="card my-0 py-0" data-aos="flip-left">
+                        <div class="front p-0 h-auto w-auto">
+                            <p>Mot</p>
+                            <p>balablabalab <span class="front p-0 h-auto w-auto">Mot</span> suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase suite de la phrase</p>
+                        </div>
+                        <div class="back p-0 h-auto w-auto" >
+                            <p>Explication vis à vis du mot</p>
+                        </div>
+                    </div> -->
+                        <div class="col-12">
+                            {{ ent_select.getLmContent|striptags }}
+                        </div>
+                    </div>  
+                </div>   
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container h-100 d-block ">
+                <div class="content">
+                    <div class="row d-flex justify-content-center align-items-center" data-aos="fade-down"><h2><i class="fas fa-paper-plane"></i> Cette lettre vous a convaincu ? </h2>
+                    </div>
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-8 d-flex justify-content-center align-items-center"> 
+                            <div class="row entOK d-flex justify-content-center align-items-center w-100">
+                                <div class="col-md-6 ">
+                                    <button class="btn btn-dark w-100 h-75 btnLM" href="mailto:gaelle.david@egaliscope.fr">M'écrire</button>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <button class="btn btn-dark w-100 h-75 btnLM" href="https://gaelle-david.cmoi.cc/">Consulter le CV</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="col-12 col-md-6 mb-5">
+                            <h3 class="pb-4"><i class="fas fa-book-reader"></i>Pour la petite histoire</h3>
+                            <p class="textAreaP" id="littleStory">J’ai travaillé dix ans en tant qu’opératrice en télésurveillance en parallèle de mes études. Une fois le cursus souhaité obtenu, j’ai entrepris de créer une structure pour exercer le métier de sociologue. Je suis aujourd’hui en reconversion professionnelle dans le secteur du développement web et web mobile.</p>
+                            <h3 class="py-4"><i class="far fa-lightbulb"></i>Pour se faire une petite idée</h3>
+                            <p class="textAreaP">Un très bon relationnel, une grande dose de curiosité, un travail en équipe facile, très flexible et autonome et surtout... beaucoup de créativité</p>   
+                        </div>
+                        <div class="col-12 col-md-6 mb-2">
+                            <h3 class="pb-4"><i class="fas fa-paper-plane"></i>Des idées à partager ? C'est le moment de me contacter</h3>
+                            <p>Le formulaire ci-dessous est désactivé car le site n'est pas en ligne - vous pouvez me contacter par <a class="perso-link" href="mailto:gaelle.david@egaliscope.fr">e-mail</a> ou en consultant le <a class="perso-link" href="https://gaelle-david.cmoi.cc/" target="_blank">CV en ligne</a></p>
+                        </div>
+                    </div>    -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-white text-center">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col">
+                    <h3 class="footerH3">Loisirs</h3>
+                </div> -->
+            </div>
+            <div class="row d-flex justify-content-center">
+
+                
+                    <div class="col-2 col-md-1">
+                        <!--<figure >
+                            <img src=".png" alt="logo " class="img-fluid footLogo">
+                            <figcaption class="figure-caption"></figcaption>                
+                        </figure> --> 
+                    </div>
+                
+
+            </div>
+        </div>
+    </footer>
+{% else %}
+<div class="row d-flex justify-content-center align-content-center blockError my-auto">
+    <div class="col-8 d-flex"> 
+        <div class="row entNull">
+            <div class="col-12 d-flex align-items-center">
+                <div class="alert alert-dark">Pour qu'une lettre de motivation s'affiche, merci de saisir le nom de votre entreprise dans la barre de navigation.</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <!-- aos animate -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>  
+        
+    <!-- Lien pour le flip -->
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+
+    <!-- Script perso -->
+    <script src="/js/flip.js"></script>
+    <script src="/js/form.js"></script>
+    <script src="/js/aos.js"></script>
+
+
+{% endblock %}

@@ -1,10 +1,8 @@
-
-
-
 /***** necessaire si on veut faire un CSS en em*****/
 html {
     font-size: .625em;
     font-size: calc(1 * .625em);
+    height: 100vh;
 }
 
 *, *::before, *::after {
@@ -28,7 +26,8 @@ body {
 	position: relative;
 	color: #000000;
 	font-size: 16px;
-	font-family: 'Barlow Condensed', sans-serif;	
+	font-family: 'Barlow Condensed', sans-serif;
+	min-height: 100%;	
 }
 
 /************ mutualisées ***/
@@ -112,9 +111,11 @@ a:hover {
 	padding-bottom: 0;
 }
 
+/******************************************************* CV *************************************************/
+
 /************ header ***/
 
-header {
+.headerCV {
 	margin-top: 150px;
 }
 
@@ -149,7 +150,7 @@ main {
 	border-radius: 10px;
 	box-shadow: 2px 2px 20px #796D85;
 	margin-bottom: 50px;
-	margin-top: 80px;
+	margin-top: 100px;
 }
 section {
 	padding-top: 2.7em;
@@ -305,7 +306,58 @@ textarea {
 	}	
 }
 
+/******************************************************* LM *************************************************/
+.headerLM{
+	margin-top: 2em;
 
+}
+
+
+#search{
+	width: 80%;
+	padding: 12px 20px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 25px;
+	box-sizing: border-box;
+}
+
+.blockError{
+	height: 100vh;
+}
+
+.entNull{
+	height: 25vh;
+}
+
+.btnLM{
+	font-size: 2em;
+	background: #796D85;
+	border: transparent;
+}
+
+.entOK{
+
+}
+	
+
+/*.ui-autocomplete{
+	background-color: #ffffff !important;
+	display: block;
+	width: 300px;
+	box-sizing: border-box;
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+.ui-menu-item-wrapper{
+	padding: 10px;
+}
+
+.ui-menu-item-wrapper:hover{
+	background-color: #adccff;
+}
+*/
 
 
 
