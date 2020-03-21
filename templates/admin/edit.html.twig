@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_name }}{% endblock %}
+{% block jumbotron %} {{ page_name }} {% endblock %}
+
+{% block body %}
+<div class="container">
+	<h2>Editer le profile de {{ profile.alias }}</h2>
+		{{ include('admin/_form.html.twig', {form: form, button: 'Editer'}) }}
+</div>
+{% endblock %}

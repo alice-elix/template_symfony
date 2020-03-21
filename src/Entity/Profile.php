@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 
@@ -24,6 +26,13 @@ class Profile
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Votre nom doit avoir au moins {{ limit }} lettres",
+     *      maxMessage = "Votre nom peut au maximum faire {{ limit }} lettres",
+     *      allowEmptyString = false
+     * )
      */
     private $last_name;
 
@@ -39,7 +48,12 @@ class Profile
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\Email(
+     *     message = "L\'' email '{{ value }}' doit être valide."
+     * )
      */
+    
     private $email;
 
     public function getId(): ?int
