@@ -10,6 +10,8 @@ profile:
   path: /profile
   controller: App\Controller\ProfileController::index
 
+logout:
+  path: /logout
 # show:
 #   path: /profile/{slug}-{id}
 #   controller: App\Controller\ProfileController::show
