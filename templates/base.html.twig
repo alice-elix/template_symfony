@@ -21,8 +21,7 @@
     	        </a>
     	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item  {% if page_name is defined and page_name == 'BackOffice' %}active{%endif%}" href="{{path('admin')}}" aria-disabled="true">Gestion des profils</a>
-                  <a class="dropdown-item  {% if page_name is defined and page_name == 'oups' %}active{%endif%}" href="{{path('admin.lm.new')}}" aria-disabled="true">Nouvelle lettre</a>
-
+                  <a class="dropdown-item  {% if page_name is defined and page_name == 'oups' %}active{%endif%}" href="{{path('admin.lm')}}" aria-disabled="true">Gestion des lettres de motivation</a>
     	          <div class="dropdown-divider"></div>
                     {% if app.user %}
                     <a class="dropdown-item " href="{{path('logout')}}" aria-disabled="true">Se déconnecter</a>

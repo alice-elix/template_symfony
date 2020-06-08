@@ -66,8 +66,6 @@ class SecurityController extends AbstractController
     	    $em->flush();
     	    $this->addFlash('success', 'Inscription validée ! Il est temps de se connecter...');
     	    return $this->redirectToRoute('login');
-
-    		dump($this);
     	}
         return $this->render('security/inscription.html.twig',[
         	'form'     => $form->createView(),

@@ -38,6 +38,11 @@ class LM
     private $date_lm;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lm_object;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $lm_content;
@@ -97,6 +102,18 @@ class LM
     public function setDateLm(\DateTimeInterface $date_lm): self
     {
         $this->date_lm = $date_lm;
+
+        return $this;
+    }
+
+    public function getLmObject(): ?string
+    {
+        return $this->lm_object;
+    }
+
+    public function setLmObject(string $lm_object): self
+    {
+        $this->lm_object = $lm_object;
 
         return $this;
     }

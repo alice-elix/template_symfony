@@ -70,6 +70,7 @@ class User implements UserInterface,\Serializable
     *
     *@return (Role|string)[] The user roles
     */
+
     public function getRoles()
     {
         return['ROLE_ADMIN'];

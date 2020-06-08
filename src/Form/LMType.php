@@ -21,13 +21,16 @@ class LMType extends AbstractType
                 'label' => 'Nom de l\'entreprise'
             ])
             ->add('first_name_contact', null, [
-                'label' => 'Prénom'
+                'label' => 'Prénom du contact'
             ])
             ->add('last_name_contact', null, [
-                'label' => 'Nom'
+                'label' => 'Nom du contact'
             ])
             ->add('date_lm', DateType::class, [
-                'label'=> 'date'
+                'label'=> 'Date'
+            ])
+            ->add('lm_object', null, [
+                'label'=> 'Objet'
             ])
             ->add('lm_content', TextareaType::class, [
                 'label' => 'Corps de la lettre'
