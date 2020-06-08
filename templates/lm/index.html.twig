@@ -126,7 +126,12 @@
 
         <section id="experiences">
             <div class="container h-100 d-block ">
-                <div class="content " data-aos="fade-down">
+                <div class="content ">
+                    <div class="row rowLabel">
+                        <div class="col-12 mb-5">
+                            <p><strong> Objet : {{ ent_select.getLmObject() }}</strong></p>
+                        </div>
+                    </div>
                     <div class="row rowLabel">
                     <!-- <div class="row d-flex justify-content-center align-items-center" data-aos="fade-down">
                         <h2><i class="fas fa-flask"></i> titre 2eme section</h2>
@@ -141,7 +146,7 @@
                         </div>
                     </div> -->
                         <div class="col-12">
-                            {{ ent_select.getLmContent|striptags }}
+                            {{ ent_select.getLmContent|striptags('<a>')|raw|nl2br }}
                         </div>
                     </div>  
                 </div>   
