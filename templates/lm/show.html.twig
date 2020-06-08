@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails{% endblock %}
+{% block jumbotron %} {{ page_name }} {% endblock %}
+
+{% block body %}
+<div class="container">
+	<h2>Détails de la lettre de motivation choisie</h2>
+	<div class="row">
+		<div class="col-md-6">
+			<p>A venir : fichier au format pdf</p>
+			
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title">{{ lm.getNameEntreprise() }}</h3>
+					<p class="card-text">
+						{{ lm.getFirstNameContact() }} {{ lm.getLastNameContact() }}
+					</p>
+					<div class="text-primary">
+						{{ lm.getDateLm()|date("m/d/Y") }}	
+					</div>
+					<div class="text-primary">
+					 {{ lm.getLmContent() }}	
+					</div>	
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+	
+{% endblock %}

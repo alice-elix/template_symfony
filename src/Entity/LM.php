@@ -3,7 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Cocur\Slugify\Slugify;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LMRepository")
  */
@@ -57,6 +58,12 @@ class LM
 
         return $this;
     }
+    /************************ SLUG ***************************************************/
+        public function getSlug(): string
+        {
+           return $slugify = (new Slugify())->slugify($this->name_entreprise);
+        }
+    /***************************************************************************/
 
     public function getFirstNameContact(): ?string
     {
@@ -105,4 +112,6 @@ class LM
 
         return $this;
     }
+
+
 }

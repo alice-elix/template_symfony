@@ -6,6 +6,10 @@ use App\Repository\ProfileRepository;
 use App\Entity\Profile;
 use App\Form\ProfileType;
 
+use App\Repository\LMRepository;
+use App\Entity\LM;
+use App\Form\LMType;
+
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -21,10 +25,11 @@ class AdminController extends AbstractController
 
     private $em;
 
-	public function __construct(ProfileRepository $profile, EntityManagerInterface $em)
+	public function __construct(ProfileRepository $profile, LMRepository $lm, EntityManagerInterface $em)
 	{
 		$this->profile = $profile;
         $this->em = $em;
+        $this->lm = $lm;
          
 
 	}
@@ -113,6 +118,86 @@ class AdminController extends AbstractController
 
         }
         return $this->redirectToRoute('admin');
+
+    }
+
+/*********************************** lm ****************************************/
+    /**
+     * @Route("/admin/lm", name="admin.lm")
+     */
+    public function indexLm()
+    {
+        $lms = $this->lm->findAll();
+
+        return $this->render('admin/lm/index.html.twig', [
+            'page_name' => 'Liste des LM',
+            'LMs' => $lms,
+        ]);
+    }
+
+
+    /**
+    *@Route("/admin/lm/nouvelle_lm", name="admin.lm.new")
+    *@param Request $request
+    */
+    public function newLm(Request $request)
+    {
+        $lm = new LM();
+
+        $form = $this->createForm(LMType::class, $lm);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $em = $this->getDoctrine()->getManager(); 
+            $em->persist($lm);
+            $em->flush();
+            $this->addFlash('success', 'LM ajoutée avec succès !');
+            return $this->redirectToRoute('admin.lm');
+        }
+
+        return $this->render('admin/lm/new.html.twig', [
+           'page_name'  => 'l\'ajout d\'une nouvelle lettre de motivation',
+           'lm'    => $lm,
+           'form'       => $form->createView(),
+        ]);
+    }
+
+    /**
+    *@Route("/admin/lm/{id}", name="admin.lm.edit", methods="GET|POST")
+    *@param LM $lm
+    *@param Request $request
+    */
+    public function editLm(LM $lm, Request $request)
+    {
+        $form = $this->createForm(LMType::class, $lm);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $this->em->flush();
+            $this->addFlash('success', 'LM modifiée avec succès !');
+            return $this->redirectToRoute('admin.lm');
+        }
+
+        return $this->render('admin/lm/edit.html.twig', [
+                   'page_name'  => 'Edition de LM',
+                   'LM'    => $lm,
+                   'form'       => $form->createView(),
+        ]);
+    }
+
+    /**
+    *@Route("/admin/lm/{id}", name="admin.lm.delete", methods="DELETE")
+    *@param LM $lm
+    */
+    public function deleteLm(LM $lm, Request $request){
+        if($this->isCsrfTokenValid('delete'.$lm->getId(), $request->get('_token'))){
+        $this->em->remove($lm);
+        $this->em->flush();
+        $this->addFlash('success', 'LM supprimée avec succès !');
+
+        }
+        return $this->redirectToRoute('admin.lm');
 
     }
 

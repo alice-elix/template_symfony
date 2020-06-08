@@ -30,7 +30,7 @@ class ProfileController extends AbstractController
     	dump($profiles);
 
         return $this->render('pages/profile.html.twig', [
-            'page_name' => 'les profils',
+            'page_name' => 'la liste des profils',
             'profiles' => $profiles
 
         ]);
@@ -49,7 +49,7 @@ class ProfileController extends AbstractController
     		], 301);
     	}
     	return $this->render('pages/show.html.twig', [
-    	'page_name' => 'Détails du profile',
+    	'page_name' => 'le profil choisi en détails',
     	'profile' => $profile
 
     	]);

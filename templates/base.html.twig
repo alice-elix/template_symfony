@@ -15,33 +15,40 @@
 
     	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	    <ul class="navbar-nav mr-auto">
+    	      <li class="nav-item dropdown">
+    	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    	          Espace Perso
+    	        </a>
+    	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item  {% if page_name is defined and page_name == 'BackOffice' %}active{%endif%}" href="{{path('admin')}}" aria-disabled="true">Gestion des profils</a>
+                  <a class="dropdown-item  {% if page_name is defined and page_name == 'oups' %}active{%endif%}" href="{{path('admin.lm.new')}}" aria-disabled="true">Nouvelle lettre</a>
+
+    	          <div class="dropdown-divider"></div>
+                    {% if app.user %}
+                    <a class="dropdown-item " href="{{path('logout')}}" aria-disabled="true">Se déconnecter</a>
+                    {% else %}
+                    <a class="dropdown-item " href="{{path('login')}}" aria-disabled="true">Se connecter</a>
+                    {% endif %}
+    	        </div>
+    	      </li>
               <li class="nav-item">
                 <a class="nav-link" target="_blank" href="{{path('cv')}}">CV</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="{{path('admin')}}">Espace Perso</a>
+                <a class="nav-link " href="{{path('lm')}}" target="_blank">Lettres de motivation</a>
               </li>
-    	      <li class="nav-item dropdown">
-    	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	          Pages à venir
-    	        </a>
-    	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    	          <a class="dropdown-item" href="{{path('lm')}}" aria-disabled="true" target="_blank">Lettres de motivation</a>
-    	          <div class="dropdown-divider"></div>
-                  <a class="dropdown-item disabled {% if page_name is defined and page_name == 'les profils' %}active{%endif%}" href="{{path('profile')}}" aria-disabled="true">Profils</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pages à venir
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item  {% if page_name is defined and page_name == 'les profils' %}active{%endif%}" href="{{path('profile')}}" aria-disabled="true">Profils</a>
+                    <div class="dropdown-divider"></div>
                   <a class="dropdown-item disabled" href="#" aria-disabled="true">Tchat</a>
                   <a class="dropdown-item disabled" href="#" aria-disabled="true">Jeux</a>
-    	        </div>
-    	      </li>
-              {% if app.user %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{path('logout')}}">Se déconnecter</a>
+
+                </div>
               </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{path('login')}}">Se connecter</a>
-              </li>
-              {% endif %}
     	    </ul>
     	  </div>
     	</nav>

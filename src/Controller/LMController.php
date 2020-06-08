@@ -10,6 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Form\LMType;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
 class LMController extends AbstractController
 {
 
@@ -33,10 +39,6 @@ class LMController extends AbstractController
     	#sinon, 
     	#afficher la page par défaut : un bouton pour m'envoyer un mail, un bouton pour accèder au cv en ligne, un bouton pour danser la polka (?)
     	#faire la gestion du formulaire ici
-    	#s'il est en methode GET, ça suffit pour passer l'id dans l'url
-    	#attention : la réponse doit entrainer le chargement d'une page 
-    		#chaque valeur du tableau doit être une route genre {{ path:/lm/one }}
-    			#fonctionne comme lorsqu'en cliquant sur une ligne de réunion, ça amène à la page de ladite réunion
 
     	if(!empty($_POST)){
     		$errors=[];
@@ -45,7 +47,7 @@ class LMController extends AbstractController
     	    $safe = array_map('trim', array_map('strip_tags', $_POST));
     	    
 		    $nameExists = $this->getDoctrine()->getRepository(LM::class)->findOneBy(['name_entreprise' => $safe['name']]);
-    	   ///////////////////////////////////////// tableau d'erreur                                                     
+    	   ///////////////////////////////////////// tableau d'erreur                                         
 
 	    	if(empty($nameExists)){
 	    		$errors[] = 'Cette entreprise n\'a pas été trouvé dans la base de données. S\'il s\'agit d\'un nom composé, toutes les parties du nom sont nécessaires.';
@@ -69,4 +71,29 @@ class LMController extends AbstractController
             'ent_select'		=> $nameExists ?? [],
         ]);
     }
+
+
+     /**
+      * @Route("/lm/{slug}-{id}", name="show-lm", requirements={"slug": "[a-z0-9\-]*"})
+      * param LM $lm
+      */
+     public function show(LM $lm, string $slug)
+     {
+        if ($lm->getSlug() !== $slug){
+            return $this->redirectToRoute('show', [
+                'id' => $lm->getId(),
+                'slug' => $lm->getSlug()
+            ], 301);
+        }
+        return $this->render('lm/show.html.twig', [
+        'page_name' => 'la LM choisie en détails',
+        'lm' => $lm
+
+        ]);
+    }
+
+
+
+
+
 }

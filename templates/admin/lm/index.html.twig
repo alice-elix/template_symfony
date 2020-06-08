@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_name }}{% endblock %}
+{% block jumbotron %} {{ page_name }} {% endblock %}
+
+{% block body %}
+<div class="container">
+	<h2>Liste des personnes enregistrées</h2>
+	{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+	{% endfor %}
+
+	<div class="row flex">
+		{% for lm in LMs %}
+			<div class="col-4">
+				<div class="card">
+					<div class="card-body">
+						<h3 class="card-title">
+							<a href="{{ path('show-lm', {id: lm.id, slug: lm.slug}) }}">{{ lm.getNameEntreprise() }}</a>
+						</h3>
+						<p class="card-text" style="display: inline-block;">
+							<a href="{{ path('admin.lm.edit', {id: lm.id}) }}" class="btn btn-secondary m-2" >Editer</a>
+							<form class="m-2"method="post" action="{{ path('admin.lm.delete', {id: lm.id}) }}" style="display: inline-block;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce profil ?')">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ lm.id)}}">
+								<button class="btn btn-danger">Supprimer</button>
+							</form>
+						</p>							
+					</div>	
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<div class="row">
+		<div class="col-md-6 mt-2">
+			<a href="{{ path('admin.lm.new')}}" class="btn btn-secondary">Créer une nouvelle LM</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -43,11 +43,6 @@ class Profile
 
     /**
      * @ORM\Column(type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @ORM\Column(type="string", length=255)
      *
      * @Assert\Email(
      *     message = "L\'' email '{{ value }}' doit être valide."
